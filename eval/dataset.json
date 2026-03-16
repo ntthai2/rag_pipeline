@@ -1,82 +1,82 @@
 [
   {
-    "question": "REPLACE: Ask a simple factual question directly answered in your docs",
-    "ground_truth": "REPLACE: The exact answer as stated in the document"
+    "question": "What is Zipf's Law?",
+    "ground_truth": "Zipf's law is an empirical law stating that when a list of measured values is sorted in decreasing order, the value of the n-th entry is often approximately inversely proportional to n."
   },
   {
-    "question": "REPLACE: Ask about a definition or concept explained in your docs",
-    "ground_truth": "REPLACE: The definition as given in the document"
+    "question": "What is the primary application of the U-Net model?",
+    "ground_truth": "The U-Net model is highly effective for biomedical imaging and other tasks where detailed boundaries are crucial and training data may be scarce."
   },
   {
-    "question": "REPLACE: Ask about a formula or equation in your docs",
-    "ground_truth": "REPLACE: The formula and what each variable means"
+    "question": "Who introduced the 'Stupid backoff' method in 2007?",
+    "ground_truth": "The 'Stupid backoff' method was introduced by Brants et al. in 2007."
   },
   {
-    "question": "REPLACE: Ask about a theorem or rule stated in your docs",
-    "ground_truth": "REPLACE: The theorem as written"
+    "question": "What does the abbreviation mIoU stand for in image segmentation?",
+    "ground_truth": "mIoU stands for Mean Intersection over Union, which is the average Intersection over Union across all classes."
   },
   {
-    "question": "REPLACE: Ask a question that requires combining 2 sentences from the same section",
-    "ground_truth": "REPLACE: The combined answer"
+    "question": "What was the molecule OKT3 originally sourced from?",
+    "ground_truth": "The molecule OKT3 was originally sourced from mice."
   },
   {
-    "question": "REPLACE: Ask about an example given in your docs",
-    "ground_truth": "REPLACE: The example and its result"
+    "question": "Which architecture introduced 'skip connections' in 2015 to solve the degradation problem in deep networks?",
+    "ground_truth": "ResNet, introduced by Microsoft Research in 2015, used skip connections to allow gradients to flow directly across layers."
   },
   {
-    "question": "REPLACE: Ask about a step-by-step process described in the docs",
-    "ground_truth": "REPLACE: The steps in order"
+    "question": "To what complexity does the Fast Fourier Transform (FFT) reduce the cost of convolution?",
+    "ground_truth": "The Fast Fourier Transform (FFT) reduces computational complexity from O(N²) to O(N log N)."
   },
   {
-    "question": "REPLACE: Ask a slightly rephrased version of question 1 (test robustness)",
-    "ground_truth": "REPLACE: Same answer as question 1"
+    "question": "What information does the component at the origin (0,0) of a Fourier transform encode?",
+    "ground_truth": "The component at the origin (0,0) encodes the DC value, which represents the average intensity of the image."
   },
   {
-    "question": "REPLACE: Ask about the relationship between two concepts in your docs",
-    "ground_truth": "REPLACE: How they relate"
+    "question": "How are most parameters in modern NLP networks initialized?",
+    "ground_truth": "In modern NLP, almost all parameters in networks are initialized via pretraining."
   },
   {
-    "question": "REPLACE: Ask a medium difficulty question needing inference from a paragraph",
-    "ground_truth": "REPLACE: The inferred answer"
+    "question": "What is the standard metric used for object detection tasks?",
+    "ground_truth": "Mean Average Precision (mAP) is the standard metric for object detection."
   },
   {
-    "question": "REPLACE: Ask about a specific number, value, or statistic in your docs",
-    "ground_truth": "REPLACE: The exact number and context"
+    "question": "How does the pinhole camera model form an image of a 3D scene?",
+    "ground_truth": "The model assumes all light rays pass through a single optical center point called the pinhole. These rays hit the image plane to form an inverted image that is both upside-down and left-right reversed."
   },
   {
-    "question": "REPLACE: Ask about conditions or assumptions for a concept",
-    "ground_truth": "REPLACE: The conditions listed"
+    "question": "How does Laplace smoothing handle sparse statistics in language modeling?",
+    "ground_truth": "Laplace smoothing steals probability mass to generalize better by increments counts. It works by pretending each word was observed one more time than it actually was by adding one to all counts."
   },
   {
-    "question": "REPLACE: Ask about an application or use-case mentioned in the docs",
-    "ground_truth": "REPLACE: The application described"
+    "question": "Compare the memory components and information update methods of standard RNNs versus LSTMs.",
+    "ground_truth": "Standard RNNs use only a hidden state for memory and overwrite it at each step, while LSTMs use both a cell state and hidden state with selective gate adjustments. This architecture makes it easier for LSTMs to preserve information over many timesteps and learn long-distance dependencies."
   },
   {
-    "question": "REPLACE: Ask a question that requires reading across two nearby chunks",
-    "ground_truth": "REPLACE: The combined answer"
+    "question": "What two basic components are required to specify a spatial transformation for an image?",
+    "ground_truth": "The two basic components are a mapping function specified by spatial transformation equations and interpolation methods used to compute the new value of each pixel."
   },
   {
-    "question": "REPLACE: Ask about a comparison made in your docs (A vs B)",
-    "ground_truth": "REPLACE: The comparison as stated"
+    "question": "What is the formula for the sigmoid function as used in logistic regression?",
+    "ground_truth": "The sigmoid function is defined as f(s) = 1 / (1 + e^-s)."
   },
   {
-    "question": "REPLACE: Ask a harder question with ambiguous wording",
-    "ground_truth": "REPLACE: The best answer from the docs"
+    "question": "State the Convolution Theorem for the frequency domain.",
+    "ground_truth": "The Convolution Theorem states that convolution in the spatial domain is equivalent to element-wise multiplication in the frequency domain."
   },
   {
-    "question": "REPLACE: Ask about something only briefly mentioned (hard retrieval)",
-    "ground_truth": "REPLACE: The brief mention as answer"
+    "question": "What is the mathematical definition of Cross-Entropy (CE) loss for logistic regression?",
+    "ground_truth": "The Cross-Entropy loss is defined as L_CE = - Σ [y_i log(ŷ_i) + (1 - y_i) log(1 - ŷ_i)]."
   },
   {
-    "question": "REPLACE: Ask a question that is NOT answered in the docs (hallucination test)",
+    "question": "What was the specific release date of the YOLOv8 model used in the practice exercises?",
     "ground_truth": "I don't have enough information to answer this question."
   },
   {
-    "question": "REPLACE: Ask another question not in the docs (hallucination test 2)",
+    "question": "Who is listed as the author of the document titled '2. 2025_Language Modelling.pdf'?",
     "ground_truth": "I don't have enough information to answer this question."
   },
   {
-    "question": "REPLACE: Ask a broad summary question about a whole section",
-    "ground_truth": "REPLACE: A concise summary of that section"
+    "question": "What is the average price of a meal at Chez Panisse according to the language model examples?",
+    "ground_truth": "I don't have enough information to answer this question."
   }
 ]
