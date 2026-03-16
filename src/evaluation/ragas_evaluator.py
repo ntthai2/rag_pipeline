@@ -4,6 +4,9 @@ from pathlib import Path
 from datasets import Dataset
 from ragas import evaluate
 from ragas.metrics import faithfulness, answer_relevancy
+from ragas.llms import LangchainLLMWrapper
+from ragas.embeddings import LangchainEmbeddingsWrapper
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from src.retrieval.retriever import retrieve
 from src.generation.response_builder import build_and_generate
 from src.core.config import settings
@@ -35,7 +38,20 @@ async def run_evaluation(dataset_path: str = "eval/dataset.json") -> dict:
         logger.info("eval_sample_done", question=item["question"][:60])
 
     dataset = Dataset.from_list(rows)
-    scores = evaluate(dataset, metrics=[faithfulness, answer_relevancy])
+
+    # ragas 0.2.x uses LLM wrapper
+    llm = LangchainLLMWrapper(ChatOpenAI(
+        base_url=settings.vllm_url,
+        api_key=settings.vllm_api_key,
+        model=settings.vllm_model,
+        temperature=0.1,
+    ))
+
+    scores = evaluate(
+        dataset,
+        metrics=[faithfulness, answer_relevancy],
+        llm=llm,
+    )
 
     results = {
         "faithfulness": round(float(scores["faithfulness"]), 4),
@@ -43,11 +59,9 @@ async def run_evaluation(dataset_path: str = "eval/dataset.json") -> dict:
         "num_samples": len(rows),
     }
 
-    # Save results
     results_dir = Path("eval/results")
     results_dir.mkdir(exist_ok=True)
-    output_path = results_dir / "latest.json"
-    with open(output_path, "w") as f:
+    with open(results_dir / "latest.json", "w") as f:
         json.dump(results, f, indent=2)
 
     logger.info("eval_complete", **results)
