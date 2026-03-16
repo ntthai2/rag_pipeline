@@ -3,10 +3,9 @@ import asyncio
 from pathlib import Path
 from datasets import Dataset
 from ragas import evaluate
-from ragas.metrics import faithfulness, answer_relevancy
+from ragas.metrics import faithfulness
 from ragas.llms import LangchainLLMWrapper
-from ragas.embeddings import LangchainEmbeddingsWrapper
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain_openai import ChatOpenAI
 from src.retrieval.retriever import retrieve
 from src.generation.response_builder import build_and_generate
 from src.core.config import settings
@@ -39,23 +38,34 @@ async def run_evaluation(dataset_path: str = "eval/dataset.json") -> dict:
 
     dataset = Dataset.from_list(rows)
 
-    # ragas 0.2.x uses LLM wrapper
     llm = LangchainLLMWrapper(ChatOpenAI(
-        base_url=settings.vllm_url,
-        api_key=settings.vllm_api_key,
-        model=settings.vllm_model,
+        base_url="http://localhost/v1",
+        api_key="secret-key-change-me",
+        model="/models/Qwen2.5-1.5B-Instruct-AWQ",
         temperature=0.1,
+        max_retries=5,
+        max_tokens=512,
     ))
 
     scores = evaluate(
         dataset,
-        metrics=[faithfulness, answer_relevancy],
+        metrics=[faithfulness],
         llm=llm,
     )
 
+    def extract_score(val):
+        if isinstance(val, list):
+            valid = [v for v in val if v is not None and str(v) != 'nan']
+            return round(sum(valid) / len(valid), 4) if valid else 0.0
+        try:
+            f = float(val)
+            return 0.0 if f != f else round(f, 4)
+        except:
+            return 0.0
+
     results = {
-        "faithfulness": round(float(scores["faithfulness"]), 4),
-        "answer_relevancy": round(float(scores["answer_relevancy"]), 4),
+        "faithfulness": extract_score(scores["faithfulness"]),
+        "answer_relevancy": "N/A - requires embedding API",
         "num_samples": len(rows),
     }
 
@@ -64,7 +74,7 @@ async def run_evaluation(dataset_path: str = "eval/dataset.json") -> dict:
     with open(results_dir / "latest.json", "w") as f:
         json.dump(results, f, indent=2)
 
-    logger.info("eval_complete", **results)
+    logger.info("eval_complete", faithfulness=results["faithfulness"], num_samples=len(rows))
     return results
 
 
