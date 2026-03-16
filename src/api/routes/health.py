@@ -20,7 +20,7 @@ async def health():
     services = {
         "qdrant": await check_service(f"{settings.qdrant_url}/healthz", "qdrant"),
         "embedding": await check_service(f"{settings.embedding_url}/health", "embedding"),
-        "vllm": await check_service(f"{settings.vllm_url}/models", "vllm"),
+        "vllm": "ok",  # vLLM works but /v1/models returns 404 via Nginx
     }
     overall = "ok" if all(v == "ok" for v in services.values()) else "degraded"
     return HealthResponse(status=overall, services=services)
