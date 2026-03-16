@@ -9,7 +9,7 @@ services:
     volumes:
       - qdrant_data:/qdrant/storage
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:6333/healthz"]
       interval: 15s
       timeout: 5s
       retries: 5
@@ -56,7 +56,7 @@ services:
       - ../data:/app/data
     depends_on:
       qdrant:
-        condition: service_healthy
+        condition: service_started
       jina-embedding:
         condition: service_healthy
     healthcheck:
@@ -64,6 +64,7 @@ services:
       interval: 15s
       timeout: 5s
       retries: 5
+      start_period: 30s
 
 volumes:
   qdrant_data:
