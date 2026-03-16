@@ -41,29 +41,25 @@ Internal: Qdrant + Jina v3 in Docker Compose
 ## Quick Start
 
 ### Prerequisites
-- Start your Week 1 vLLM first:
+- Start Week 1 vLLM first:
   ```bash
   cd ../slm_hosting
   docker compose -f docker/docker-compose.yml up -d
   ```
 
-### 1. Clone & configure
+### 1. Configure .env
 ```bash
-git clone <your-repo-url>
-cd rag-project-weaction
 cp .env.example .env
-# Edit .env if needed (VLLM_URL, VLLM_API_KEY)
 ```
 
 ### 2. Add your PDFs
 ```bash
-cp /path/to/your/*.pdf data/raw/
+cp /path/to/*.pdf data/raw/
 ```
 
 ### 3. Start services
 ```bash
 docker compose -f docker/docker-compose.yml up --build -d
-# Wait ~2 min for Jina v3 to download and warm up
 ```
 
 ### 4. Ingest documents
@@ -85,7 +81,6 @@ curl http://localhost:8080/health
 
 ### 7. Run evaluation
 ```bash
-# First fill in eval/dataset.json with your 20 questions
 pip install -r requirements.txt
 python scripts/evaluate.py
 ```
@@ -131,14 +126,12 @@ Ingests all PDFs from `data/raw/`.
 | Faithfulness     | _TBD_  | > 0.7  |
 | Answer Relevancy | _TBD_  | > 0.7  |
 
-_Run `python scripts/evaluate.py` and update this table._
-
 ---
 
 ## Project Structure
 
 ```
-rag-project-weaction/
+rag_pipeline/
 ├── src/
 │   ├── ingestion/       # Docling loader, chunker, embedder, Qdrant indexer
 │   ├── retrieval/       # Vector search with similarity threshold
