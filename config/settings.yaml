@@ -1,0 +1,16 @@
+chunking:
+  chunk_size: 512
+  chunk_overlap: 50
+
+retrieval:
+  top_k: 20
+  top_k_final: 5
+  similarity_threshold: 0.3
+
+embedding:
+  model: jinaai/jina-embeddings-v3
+  dim: 1024
+
+llm:
+  max_tokens: 512
+  temperature: 0.1

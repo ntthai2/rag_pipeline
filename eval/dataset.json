@@ -1,0 +1,82 @@
+[
+  {
+    "question": "REPLACE: Ask a simple factual question directly answered in your docs",
+    "ground_truth": "REPLACE: The exact answer as stated in the document"
+  },
+  {
+    "question": "REPLACE: Ask about a definition or concept explained in your docs",
+    "ground_truth": "REPLACE: The definition as given in the document"
+  },
+  {
+    "question": "REPLACE: Ask about a formula or equation in your docs",
+    "ground_truth": "REPLACE: The formula and what each variable means"
+  },
+  {
+    "question": "REPLACE: Ask about a theorem or rule stated in your docs",
+    "ground_truth": "REPLACE: The theorem as written"
+  },
+  {
+    "question": "REPLACE: Ask a question that requires combining 2 sentences from the same section",
+    "ground_truth": "REPLACE: The combined answer"
+  },
+  {
+    "question": "REPLACE: Ask about an example given in your docs",
+    "ground_truth": "REPLACE: The example and its result"
+  },
+  {
+    "question": "REPLACE: Ask about a step-by-step process described in the docs",
+    "ground_truth": "REPLACE: The steps in order"
+  },
+  {
+    "question": "REPLACE: Ask a slightly rephrased version of question 1 (test robustness)",
+    "ground_truth": "REPLACE: Same answer as question 1"
+  },
+  {
+    "question": "REPLACE: Ask about the relationship between two concepts in your docs",
+    "ground_truth": "REPLACE: How they relate"
+  },
+  {
+    "question": "REPLACE: Ask a medium difficulty question needing inference from a paragraph",
+    "ground_truth": "REPLACE: The inferred answer"
+  },
+  {
+    "question": "REPLACE: Ask about a specific number, value, or statistic in your docs",
+    "ground_truth": "REPLACE: The exact number and context"
+  },
+  {
+    "question": "REPLACE: Ask about conditions or assumptions for a concept",
+    "ground_truth": "REPLACE: The conditions listed"
+  },
+  {
+    "question": "REPLACE: Ask about an application or use-case mentioned in the docs",
+    "ground_truth": "REPLACE: The application described"
+  },
+  {
+    "question": "REPLACE: Ask a question that requires reading across two nearby chunks",
+    "ground_truth": "REPLACE: The combined answer"
+  },
+  {
+    "question": "REPLACE: Ask about a comparison made in your docs (A vs B)",
+    "ground_truth": "REPLACE: The comparison as stated"
+  },
+  {
+    "question": "REPLACE: Ask a harder question with ambiguous wording",
+    "ground_truth": "REPLACE: The best answer from the docs"
+  },
+  {
+    "question": "REPLACE: Ask about something only briefly mentioned (hard retrieval)",
+    "ground_truth": "REPLACE: The brief mention as answer"
+  },
+  {
+    "question": "REPLACE: Ask a question that is NOT answered in the docs (hallucination test)",
+    "ground_truth": "I don't have enough information to answer this question."
+  },
+  {
+    "question": "REPLACE: Ask another question not in the docs (hallucination test 2)",
+    "ground_truth": "I don't have enough information to answer this question."
+  },
+  {
+    "question": "REPLACE: Ask a broad summary question about a whole section",
+    "ground_truth": "REPLACE: A concise summary of that section"
+  }
+]
